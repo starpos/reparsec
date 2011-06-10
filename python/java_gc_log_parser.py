@@ -226,13 +226,13 @@ parseParNew = andP([ \
 ])
 if __debug__:
     text = r"2.380: [GC 2.380: [ParNew: 32768K->4204K(49152K), 0.0128980 secs] 32768K->4204K(114688K), 0.0130090 secs] [Times: user=0.04 sys=0.00, real=0.01 secs]"
-    (ret, data) = parseParNewP(text, {})
+    (ret, data) = parseParNew(text, {})
     print text
     print len(ret)
     print data
 if __debug__:
     text = r"9.815: [GC 9.815: [ParNew: 32768K->10796K(49152K), 0.0286700 secs] 52540K->30568K(114688K) icms_dc=0 , 0.0287550 secs] [Times: user=0.09 sys=0.00, real=0.03 secs]"
-    (ret, data) = parseParNewP(text, {})
+    (ret, data) = parseParNew(text, {})
     print text
     print len(ret)
     print data
