@@ -2,6 +2,7 @@
 
 import re
 import sys
+import json
 
 """
 This is a parser of GC log of Sun HotSpot JVM Version 6.
@@ -16,12 +17,13 @@ You can get all data as a python dictionary structure
 in your analyer as follows:
 
 import sys
+import json
 
 list = []
 for line in sys.stdin:
     line.rstrip()
-    list.append(dict(eval(line)))
-    
+    list.append(dict(json.loads(line)))
+        
 """
 
 ################################################################################
@@ -740,7 +742,7 @@ for line in sys.stdin:
             data["type"] = "CMS-concurrent-abortable-preclean-fullgc"
         if __debug__:
             print ("len: %d" % len(ret))
-        print data
+        print json.dumps(data)
     except ParseError, msg:
         #print msg
         print ("###%s" % text)
