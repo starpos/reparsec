@@ -95,7 +95,13 @@ class ParseError(Exception):
 # Parser combinators.
 ################################################################################
 
-# Parser combinator AND.
+"""
+Parser combinator AND.
+
+parsers :: [Parser]
+return :: Parser
+
+"""
 def andP(parsers):
     def parseAnd_(text, data):
         text0 = text
@@ -107,7 +113,13 @@ def andP(parsers):
         return (text0, data0)
     return parseAnd_
 
-# Parser combinator OR.
+"""
+Parser combinator OR.
+
+parsers :: [Parser]
+return :: Parser
+
+"""
 def orP(parsers):
     def parseOr_(text, data):
         msgL = []
@@ -121,7 +133,12 @@ def orP(parsers):
         raise ParseError(msgs)
     return parseOr_
 
-# Parser combinator MANY.
+"""
+Parser combinator MANY.
+parsers :: [Parser]
+return :: Parser
+
+"""
 def manyP(parser):
     def parseMany_(text, data):
         text0 = text
